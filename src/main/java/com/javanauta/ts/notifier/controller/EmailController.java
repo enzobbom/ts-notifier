@@ -1,7 +1,7 @@
-package com.javanauta.notifier.controller;
+package com.javanauta.ts.notifier.controller;
 
-import com.javanauta.notifier.business.EmailService;
-import com.javanauta.notifier.business.dto.TaskDTO;
+import com.javanauta.ts.notifier.business.EmailService;
+import com.javanauta.ts.notifier.business.dto.TaskDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

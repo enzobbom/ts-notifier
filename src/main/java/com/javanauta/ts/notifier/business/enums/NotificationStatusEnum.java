@@ -1,4 +1,4 @@
-package com.javanauta.notifier.business.enums;
+package com.javanauta.ts.notifier.business.enums;
 
 public enum NotificationStatusEnum {
     PENDING,
