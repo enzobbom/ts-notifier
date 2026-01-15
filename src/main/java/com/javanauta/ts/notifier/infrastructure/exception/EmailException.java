@@ -1,4 +1,4 @@
-package com.javanauta.notifier.infrastructure.exception;
+package com.javanauta.ts.notifier.infrastructure.exception;
 
 public class EmailException extends RuntimeException {
     public EmailException(String message) {
