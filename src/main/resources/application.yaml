@@ -1,4 +1,7 @@
 spring:
+  application:
+    name: ts-notifier
+    description: 'Task Scheduler - Notifier module'
   mail:
     host: smtp.gmail.com
     port: 587
