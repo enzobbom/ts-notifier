@@ -1,6 +1,7 @@
 package com.javanauta.ts.notifier.business;
 
 import com.javanauta.ts.notifier.business.dto.TaskDTO;
+import com.javanauta.ts.notifier.business.enums.NotificationStatusEnum;
 import com.javanauta.ts.notifier.infrastructure.exception.EmailException;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.InternetAddress;
@@ -31,6 +32,8 @@ public class EmailService {
     public String senderName;
 
     public void sendEmail(TaskDTO taskDTO) {
+        if (taskDTO.getNotificationStatusEnum() != NotificationStatusEnum.PENDING) {return;}
+
         try {
             MimeMessage message = javaMailSender.createMimeMessage();
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, true, StandardCharsets.UTF_8.name());

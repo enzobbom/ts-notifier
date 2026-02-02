@@ -1,3 +1,5 @@
+# Env variables must be set locally - used locally and in docker environment (injected in bff's docker-compose)
+
 spring:
   application:
     name: ts-notifier
@@ -5,30 +7,24 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username:
-    password:
+    username: ${TS_SMTP_EMAIL}
+    password: ${TS_SMTP_PASSWORD}
     protocol: smtp
     properties:
       mail:
         smtp:
-          socketFactory:
-            port: 465
-            class: javax.net.ssl.SSLSocketFactory
-            fallback: false
           auth: true
           starttls:
             enable: true
+            required: true
           connectiontimeout: 5000
           timeout: 3000
           writetimeout: 5000
-
   thymeleaf:
     enable: true
-
 sending:
   email:
-    sender:
+    sender: ${TS_SMTP_EMAIL}
     senderName: 'Javanauta'
-
 server:
   port: 8082
