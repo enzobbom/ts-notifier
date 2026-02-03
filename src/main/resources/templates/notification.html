@@ -42,7 +42,7 @@
         <h1>Task Notification</h1>
     </div>
     <div class="content">
-        <p>Warning: Your task <span class="important" th:text="${name}">Task Name</span> is due at <span class="important" th:text="${dueDateTime}">Task Due Date and Time</span>.</p>
+        <p>Warning: Your task <span class="important" th:text="${name}">Task Name</span> is scheduled to <span class="important" th:text="${scheduledDateTime}">Task Scheduled Date and Time</span>.</p>
         <p>Your task description:</p>
         <p th:text="|&quot;${description}&quot;|">Task Description</p>
     </div>
