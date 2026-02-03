@@ -16,6 +16,8 @@ import org.thymeleaf.context.Context;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 @RequiredArgsConstructor
 
@@ -42,9 +44,12 @@ public class EmailService {
             mimeMessageHelper.setTo(InternetAddress.parse(taskDTO.getUserEmail()));
             mimeMessageHelper.setSubject("Task notification");
 
+            ZoneId zoneId = ZoneId.of(taskDTO.getTimeZoneId());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss").withZone(zoneId);
+
             Context context = new Context();
             context.setVariable("name", taskDTO.getName());
-            context.setVariable("dueDateTime", taskDTO.getDueDateTime());
+            context.setVariable("dueDateTime", formatter.format(taskDTO.getDueDateTime()));
             context.setVariable("description", taskDTO.getDescription());
             String template = templateEngine.process("notification", context);
             mimeMessageHelper.setText(template, true);
