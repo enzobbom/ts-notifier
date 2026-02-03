@@ -1,10 +1,9 @@
 package com.javanauta.ts.notifier.business.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.javanauta.ts.notifier.business.enums.NotificationStatusEnum;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Getter
 @Setter
@@ -16,12 +15,10 @@ public class TaskDTO {
     private String id;
     private String name;
     private String description;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
-    private LocalDateTime creationDateTime;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
-    private LocalDateTime dueDateTime;
+    private Instant creationDateTime;
+    private Instant scheduledDateTime;
     private String userEmail;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
-    private LocalDateTime modificationDateTime;
+    private Instant modificationDateTime;
     private NotificationStatusEnum notificationStatusEnum;
+    private String timeZoneId;
 }
