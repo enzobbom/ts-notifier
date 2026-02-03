@@ -49,7 +49,7 @@ public class EmailService {
 
             Context context = new Context();
             context.setVariable("name", taskDTO.getName());
-            context.setVariable("dueDateTime", formatter.format(taskDTO.getDueDateTime()));
+            context.setVariable("scheduledDateTime", formatter.format(taskDTO.getScheduledDateTime()));
             context.setVariable("description", taskDTO.getDescription());
             String template = templateEngine.process("notification", context);
             mimeMessageHelper.setText(template, true);
