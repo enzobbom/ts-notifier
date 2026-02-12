@@ -1,4 +1,5 @@
-# Env variables must be set locally - used locally and in docker environment (injected in bff's docker-compose)
+# SMTP credentials: actual credentials to access an SMTP server (e.g. Gmail App Password)
+# Injected via environment variables. If not defined, a No-Op email service will be used
 
 spring:
   application:
