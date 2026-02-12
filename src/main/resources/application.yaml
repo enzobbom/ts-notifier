@@ -1,4 +1,5 @@
-# Env variables must be set locally - used locally and in docker environment (injected in bff's docker-compose)
+# SMTP credentials: actual credentials to access an SMTP server (e.g. Gmail App Password)
+# Injected via environment variables. If not defined, a No-Op email service will be used
 
 spring:
   application:
@@ -7,8 +8,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: ${TS_SMTP_EMAIL}
-    password: ${TS_SMTP_PASSWORD}
+    username: ${TS_SMTP_EMAIL:}
+    password: ${TS_SMTP_PASSWORD:}
     protocol: smtp
     properties:
       mail:
@@ -24,7 +25,7 @@ spring:
     enable: true
 sending:
   email:
-    sender: ${TS_SMTP_EMAIL}
+    sender: ${TS_SMTP_EMAIL:}
     senderName: 'Javanauta'
 server:
   port: 8082

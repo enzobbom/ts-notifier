@@ -15,7 +15,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(EmailException.class)
     public ResponseEntity<String> handlerEmailException(EmailException ex) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+        log.error("Email exception", ex);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send task notification email");
     }
 
     // Generic error handling
