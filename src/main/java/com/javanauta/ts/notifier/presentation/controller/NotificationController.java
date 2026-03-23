@@ -1,7 +1,7 @@
-package com.javanauta.ts.notifier.controller;
+package com.javanauta.ts.notifier.presentation.controller;
 
-import com.javanauta.ts.notifier.business.EmailService;
-import com.javanauta.ts.notifier.business.dto.TaskDTO;
+import com.javanauta.ts.notifier.application.service.NotificationService;
+import com.javanauta.ts.notifier.presentation.dto.TaskDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/email")
-public class EmailController {
+public class NotificationController {
 
-    private final EmailService emailService;
+    private final NotificationService notificationService;
 
     @PostMapping
     public ResponseEntity<Void> sendEmail(@RequestBody TaskDTO taskDTO) {
-        emailService.sendEmail(taskDTO);
+        notificationService.sendEmail(taskDTO);
         return ResponseEntity.ok().build();
     }
 }

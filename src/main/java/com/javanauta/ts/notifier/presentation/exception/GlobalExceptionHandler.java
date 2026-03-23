@@ -1,6 +1,6 @@
-package com.javanauta.ts.notifier.controller;
+package com.javanauta.ts.notifier.presentation.exception;
 
-import com.javanauta.ts.notifier.infrastructure.exception.EmailException;
+import com.javanauta.ts.notifier.domain.exception.SendEmailException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +13,8 @@ public class GlobalExceptionHandler {
 
     // business exceptions
 
-    @ExceptionHandler(EmailException.class)
-    public ResponseEntity<String> handlerEmailException(EmailException ex) {
+    @ExceptionHandler(SendEmailException.class)
+    public ResponseEntity<String> handlerEmailException(SendEmailException ex) {
         log.error("Email exception", ex);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send task notification email");
     }
