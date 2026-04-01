@@ -1,7 +1,8 @@
 package com.javanauta.ts.notifier.infrastructure.email.sender;
 
-import com.javanauta.ts.notifier.domain.exception.SendEmailException;
-import com.javanauta.ts.notifier.domain.ports.email.EmailSender;
+import com.javanauta.ts.notifier.service.exception.EmailException;
+import com.javanauta.ts.notifier.service.model.EmailMessage;
+import com.javanauta.ts.notifier.service.ports.email.EmailSender;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
@@ -19,19 +20,19 @@ public class SmtpEmailSender implements EmailSender {
 
     private final JavaMailSender javaMailSender;
 
-    public void sendEmail(String sender, String senderName, String recipientEmail, String subject, String htmlEmailContent) {
+    public void send(EmailMessage messageToSend) {
         try {
-            MimeMessage message = javaMailSender.createMimeMessage();
-            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, true, StandardCharsets.UTF_8.name());
+            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true, StandardCharsets.UTF_8.name());
 
-            mimeMessageHelper.setFrom(new InternetAddress(sender, senderName));
-            mimeMessageHelper.setTo(InternetAddress.parse(recipientEmail));
-            mimeMessageHelper.setSubject(subject);
-            mimeMessageHelper.setText(htmlEmailContent, true);
+            mimeMessageHelper.setFrom(new InternetAddress(messageToSend.sender(), messageToSend.senderName()));
+            mimeMessageHelper.setTo(InternetAddress.parse(messageToSend.recipient()));
+            mimeMessageHelper.setSubject(messageToSend.subject());
+            mimeMessageHelper.setText(messageToSend.body(), true);
 
-            javaMailSender.send(message);
+            javaMailSender.send(mimeMessage);
         } catch (MessagingException | UnsupportedEncodingException e) {
-            throw new SendEmailException("Sending e-mail failed", e);
+            throw new EmailException("Sending e-mail failed", e);
         }
     }
 }

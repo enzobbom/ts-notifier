@@ -1,11 +1,12 @@
 package com.javanauta.ts.notifier.infrastructure.email.sender;
 
-import com.javanauta.ts.notifier.domain.ports.email.EmailSender;
+import com.javanauta.ts.notifier.service.model.EmailMessage;
+import com.javanauta.ts.notifier.service.ports.email.EmailSender;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class NoOpEmailSender implements EmailSender {
-    public void sendEmail(String sender, String senderName, String recipientEmail, String subject, String htmlEmailContent) {
+    public void send(EmailMessage message) {
         log.debug("Skipped sending notification e-mail");
     }
 }

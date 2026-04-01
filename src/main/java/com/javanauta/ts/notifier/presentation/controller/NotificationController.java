@@ -1,7 +1,8 @@
 package com.javanauta.ts.notifier.presentation.controller;
 
-import com.javanauta.ts.notifier.application.service.NotificationService;
-import com.javanauta.ts.notifier.presentation.dto.TaskDTO;
+import com.javanauta.ts.notifier.service.NotificationService;
+import com.javanauta.ts.notifier.presentation.dto.NotifyTaskRequestDTO;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +18,8 @@ public class NotificationController {
     private final NotificationService notificationService;
 
     @PostMapping
-    public ResponseEntity<Void> sendEmail(@RequestBody TaskDTO taskDTO) {
-        notificationService.sendEmail(taskDTO);
+    public ResponseEntity<Void> sendEmail(@Valid @RequestBody NotifyTaskRequestDTO notifyTaskRequestDTO) {
+        notificationService.notify(notifyTaskRequestDTO);
         return ResponseEntity.ok().build();
     }
 }
