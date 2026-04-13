@@ -1,5 +1,6 @@
 package com.javanauta.ts.notifier.service;
 
+import com.javanauta.ts.notifier.service.mapper.NotificationMapper;
 import com.javanauta.ts.notifier.service.model.EmailMessage;
 import com.javanauta.ts.notifier.service.model.Notification;
 import com.javanauta.ts.notifier.service.ports.email.EmailComposer;
