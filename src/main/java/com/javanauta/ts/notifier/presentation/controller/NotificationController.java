@@ -1,5 +1,6 @@
 package com.javanauta.ts.notifier.presentation.controller;
 
+import com.javanauta.ts.notifier.presentation.mapper.NotificationMapper;
 import com.javanauta.ts.notifier.service.NotificationService;
 import com.javanauta.ts.notifier.presentation.dto.NotifyTaskRequestDTO;
 import jakarta.validation.Valid;
@@ -16,10 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class NotificationController {
 
     private final NotificationService notificationService;
+    private final NotificationMapper notificationMapper;
 
     @PostMapping
     public ResponseEntity<Void> sendEmail(@Valid @RequestBody NotifyTaskRequestDTO notifyTaskRequestDTO) {
-        notificationService.notify(notifyTaskRequestDTO);
+        notificationService.notify(notificationMapper.toDomain(notifyTaskRequestDTO));
         return ResponseEntity.ok().build();
     }
 }

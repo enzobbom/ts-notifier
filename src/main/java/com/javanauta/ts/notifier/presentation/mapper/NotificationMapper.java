@@ -1,4 +1,4 @@
-package com.javanauta.ts.notifier.service.mapper;
+package com.javanauta.ts.notifier.presentation.mapper;
 
 
 import com.javanauta.ts.notifier.presentation.dto.NotifyTaskRequestDTO;

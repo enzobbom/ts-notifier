@@ -1,11 +1,9 @@
 package com.javanauta.ts.notifier.service;
 
-import com.javanauta.ts.notifier.service.mapper.NotificationMapper;
-import com.javanauta.ts.notifier.service.ports.email.EmailMessage;
 import com.javanauta.ts.notifier.service.model.Notification;
 import com.javanauta.ts.notifier.service.ports.email.EmailComposer;
+import com.javanauta.ts.notifier.service.ports.email.EmailMessage;
 import com.javanauta.ts.notifier.service.ports.email.EmailSender;
-import com.javanauta.ts.notifier.presentation.dto.NotifyTaskRequestDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,7 +13,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 public class NotificationService {
-    private final NotificationMapper notificationMapper;
     private final EmailComposer emailComposer;
     private final EmailSender emailSender;
 
@@ -27,9 +24,7 @@ public class NotificationService {
 
     private static final String EMAIL_SUBJECT = "Task Notification";
 
-    public void notify(NotifyTaskRequestDTO notifyTaskRequestDTO) {
-        Notification notification = notificationMapper.toDomain(notifyTaskRequestDTO);
-
+    public void notify(Notification notification) {
         if (!notification.canBeNotified()) {
             return;
         }
