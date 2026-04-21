@@ -1,6 +1,6 @@
 package com.javanauta.ts.notifier.presentation.dto;
 
-import com.javanauta.ts.notifier.service.model.enums.NotificationStatus;
+import com.javanauta.ts.notifier.application.command.enums.NotificationStatus;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

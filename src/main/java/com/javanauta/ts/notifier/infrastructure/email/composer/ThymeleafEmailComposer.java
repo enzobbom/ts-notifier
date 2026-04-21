@@ -1,7 +1,7 @@
 package com.javanauta.ts.notifier.infrastructure.email.composer;
 
-import com.javanauta.ts.notifier.service.model.Notification;
-import com.javanauta.ts.notifier.service.ports.email.EmailComposer;
+import com.javanauta.ts.notifier.application.command.Notification;
+import com.javanauta.ts.notifier.application.port.email.EmailComposer;
 import lombok.AllArgsConstructor;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;

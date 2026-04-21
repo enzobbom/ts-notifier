@@ -1,6 +1,6 @@
-package com.javanauta.ts.notifier.service.model;
+package com.javanauta.ts.notifier.application.command;
 
-import com.javanauta.ts.notifier.service.model.enums.NotificationStatus;
+import com.javanauta.ts.notifier.application.command.enums.NotificationStatus;
 
 import java.time.Instant;
 import java.time.ZoneId;

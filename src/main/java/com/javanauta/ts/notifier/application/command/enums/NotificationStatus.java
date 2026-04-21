@@ -1,4 +1,4 @@
-package com.javanauta.ts.notifier.service.model.enums;
+package com.javanauta.ts.notifier.application.command.enums;
 
 public enum NotificationStatus {
     PENDING,

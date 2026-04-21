@@ -1,7 +1,7 @@
 package com.javanauta.ts.notifier.infrastructure.config;
 
-import com.javanauta.ts.notifier.service.ports.email.EmailComposer;
-import com.javanauta.ts.notifier.service.ports.email.EmailSender;
+import com.javanauta.ts.notifier.application.port.email.EmailComposer;
+import com.javanauta.ts.notifier.application.port.email.EmailSender;
 import com.javanauta.ts.notifier.infrastructure.email.composer.ThymeleafEmailComposer;
 import com.javanauta.ts.notifier.infrastructure.email.sender.NoOpEmailSender;
 import com.javanauta.ts.notifier.infrastructure.email.sender.SmtpEmailSender;

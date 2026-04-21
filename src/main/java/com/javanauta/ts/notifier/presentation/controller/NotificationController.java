@@ -1,7 +1,7 @@
 package com.javanauta.ts.notifier.presentation.controller;
 
 import com.javanauta.ts.notifier.presentation.mapper.NotificationMapper;
-import com.javanauta.ts.notifier.service.NotificationService;
+import com.javanauta.ts.notifier.application.usecase.NotificationService;
 import com.javanauta.ts.notifier.presentation.dto.NotifyTaskRequestDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

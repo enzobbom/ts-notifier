@@ -1,9 +1,9 @@
-package com.javanauta.ts.notifier.service;
+package com.javanauta.ts.notifier.application.usecase;
 
-import com.javanauta.ts.notifier.service.model.Notification;
-import com.javanauta.ts.notifier.service.ports.email.EmailComposer;
-import com.javanauta.ts.notifier.service.ports.email.EmailMessage;
-import com.javanauta.ts.notifier.service.ports.email.EmailSender;
+import com.javanauta.ts.notifier.application.command.Notification;
+import com.javanauta.ts.notifier.application.port.email.EmailComposer;
+import com.javanauta.ts.notifier.application.port.email.EmailMessage;
+import com.javanauta.ts.notifier.application.port.email.EmailSender;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

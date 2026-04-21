@@ -2,7 +2,7 @@ package com.javanauta.ts.notifier.presentation.mapper;
 
 
 import com.javanauta.ts.notifier.presentation.dto.NotifyTaskRequestDTO;
-import com.javanauta.ts.notifier.service.model.Notification;
+import com.javanauta.ts.notifier.application.command.Notification;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

@@ -1,4 +1,4 @@
-package com.javanauta.ts.notifier.service.ports.email;
+package com.javanauta.ts.notifier.application.port.email;
 
 import lombok.Builder;
 

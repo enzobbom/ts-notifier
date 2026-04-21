@@ -1,7 +1,7 @@
 package com.javanauta.ts.notifier.infrastructure.email.sender;
 
-import com.javanauta.ts.notifier.service.ports.email.EmailMessage;
-import com.javanauta.ts.notifier.service.ports.email.EmailSender;
+import com.javanauta.ts.notifier.application.port.email.EmailMessage;
+import com.javanauta.ts.notifier.application.port.email.EmailSender;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

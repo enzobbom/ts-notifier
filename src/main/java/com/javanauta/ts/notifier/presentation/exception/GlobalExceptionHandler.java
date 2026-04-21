@@ -1,6 +1,6 @@
 package com.javanauta.ts.notifier.presentation.exception;
 
-import com.javanauta.ts.notifier.service.exception.EmailException;
+import com.javanauta.ts.notifier.application.exception.EmailException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
