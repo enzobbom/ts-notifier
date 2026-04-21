@@ -15,15 +15,13 @@ public class SendNotificationService {
     private final EmailComposer emailComposer;
     private final EmailSender emailSender;
 
-    public void notify(NotifyTaskCommand notifyTaskCommand) {
+    public void sendNotification(NotifyTaskCommand notifyTaskCommand) {
         if (!notifyTaskCommand.canBeNotified()) {return;}
-        notifyByEmail(notifyTaskCommand);
+        sendEmailNotification(notifyTaskCommand);
     }
 
-    private void notifyByEmail(NotifyTaskCommand notifyTaskCommand) {
-        EmailMessage message = emailComposer.compose(notifyTaskCommand);
-        emailSender.send(message);
-
+    private void sendEmailNotification(NotifyTaskCommand notifyTaskCommand) {
+        emailSender.send(emailComposer.compose(notifyTaskCommand));
         log.info("Task '{}' was successfully notified by email", notifyTaskCommand.id());
     }
 }
