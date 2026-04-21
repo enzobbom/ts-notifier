@@ -10,7 +10,6 @@ public record NotifyTaskCommand(
         String id,
         String title,
         String description,
-        Instant creationDateTime,
         Instant scheduledDateTime,
         String recipient,
         NotificationStatus status,
