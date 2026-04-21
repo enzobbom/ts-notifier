@@ -1,6 +1,6 @@
 package com.javanauta.ts.notifier.application.usecase;
 
-import com.javanauta.ts.notifier.application.command.Notification;
+import com.javanauta.ts.notifier.application.command.NotifyTaskCommand;
 import com.javanauta.ts.notifier.application.port.email.EmailComposer;
 import com.javanauta.ts.notifier.application.port.email.EmailMessage;
 import com.javanauta.ts.notifier.application.port.email.EmailSender;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class NotificationService {
+public class SendNotificationService {
     private final EmailComposer emailComposer;
     private final EmailSender emailSender;
 
@@ -22,29 +22,29 @@ public class NotificationService {
     @Value("${sending.email.senderName}")
     public String sendingName;
 
-    private static final String EMAIL_SUBJECT = "Task Notification";
+    private static final String EMAIL_SUBJECT = "Task NotifyTaskCommand";
 
-    public void notify(Notification notification) {
-        if (!notification.canBeNotified()) {
+    public void notify(NotifyTaskCommand notifyTaskCommand) {
+        if (!notifyTaskCommand.canBeNotified()) {
             return;
         }
 
-        notifyByEmail(notification);
+        notifyByEmail(notifyTaskCommand);
     }
 
-    private void notifyByEmail(Notification notification) {
-        String emailBody = emailComposer.compose(notification);
+    private void notifyByEmail(NotifyTaskCommand notifyTaskCommand) {
+        String emailBody = emailComposer.compose(notifyTaskCommand);
 
         EmailMessage emailMessage = EmailMessage.builder()
                 .sender(sendingEmail)
                 .senderName(sendingName)
-                .recipient(notification.recipient())
+                .recipient(notifyTaskCommand.recipient())
                 .subject(EMAIL_SUBJECT)
                 .body(emailBody)
                 .build();
 
         emailSender.send(emailMessage);
 
-        log.info("Task '{}' was successfully notified by email", notification.id());
+        log.info("Task '{}' was successfully notified by email", notifyTaskCommand.id());
     }
 }

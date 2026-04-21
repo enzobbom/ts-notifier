@@ -6,7 +6,7 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-public record Notification(
+public record NotifyTaskCommand(
         String id,
         String title,
         String description,

@@ -2,7 +2,7 @@ package com.javanauta.ts.notifier.presentation.mapper;
 
 
 import com.javanauta.ts.notifier.presentation.dto.NotifyTaskRequestDTO;
-import com.javanauta.ts.notifier.application.command.Notification;
+import com.javanauta.ts.notifier.application.command.NotifyTaskCommand;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -15,7 +15,7 @@ public interface NotificationMapper {
     @Mapping(target = "recipient", source = "userEmail")
     @Mapping(target = "status", source = "notificationStatus")
     @Mapping(target = "timeZoneId", expression = "java(NotificationMapper.convertTimeZoneId(dto))")
-    Notification toDomain(NotifyTaskRequestDTO dto);
+    NotifyTaskCommand toDomain(NotifyTaskRequestDTO dto);
 
     static ZoneId convertTimeZoneId(NotifyTaskRequestDTO dto) {
         return ZoneId.of(dto.timeZoneId());
