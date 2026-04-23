@@ -14,7 +14,7 @@ import java.time.Instant;
 public record NotifyTaskRequestDTO(
         @NotBlank String id,
         @NotBlank String name,
-        String description,
+        @NotNull String description,
         @NotNull Instant creationDateTime,
         @NotNull Instant scheduledDateTime,
         @NotBlank @Email String userEmail,
